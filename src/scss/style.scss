@@ -96,10 +96,10 @@ body {
       table-layout: auto;
       text-align: center;
       border: 1px solid black;
-      -webkit-animation: fade-in .5s linear; /* Safari */
-      -moz-animation: fade-in .5s linear; /* Fx */
-      -o-animation: fade-in .5s linear; /* Opera */
-      animation: fade-in .5s linear; /* IE, Fx */
+      // -webkit-animation: fade-in .1s linear 0s; /* Safari */
+      // -moz-animation: fade-in .1s linear 0s; /* Fx */
+      // -o-animation: fade-in .1s linear 0s; /* Opera */
+      // animation: fade-in .1s linear 0s; /* IE, Fx */
       thead > tr {
         background-color: $dark;
         color: white;
@@ -111,10 +111,6 @@ body {
         padding: 5px 10px;
         width: auto;
         display: table-cell;
-        -webkit-animation: fade-in .3s linear; /* Safari */
-        -moz-animation: fade-in .3s linear; /* Fx */
-        -o-animation: fade-in .3s linear; /* Opera */
-        animation: fade-in .3s linear; /* IE, Fx */
       }
       th {
         padding:10px;

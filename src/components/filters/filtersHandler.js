@@ -1,3 +1,6 @@
+import weatherHandler from "../weatherHandler";
+import getWeaher from "../getWeaher";
+import switcherHandler from "../switcher/switcherHandler";
 
 /**
  * Accept checkbox change event and
@@ -20,6 +23,13 @@ const filtersHandler = event => {
       td.style.display = 'none';
     });
   }
+
+  /* check units */
+  const units = switcherHandler();
+
+  const cityInput = document.querySelector('#city');
+  const weather = getWeaher(cityInput.value, units);
+  weather.then(weatherHandler);
 };
 
 export default filtersHandler;

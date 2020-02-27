@@ -2,47 +2,92 @@ import formatDateAndTime from "./formatDate";
 
 const renderTable = (list) => {
  
-  // const tableSection = document.querySelector('.table-wrap');
-  // tableSection.innerHTML = '';  // clear table section
+  /* clear table wrapper */
+  const tableSection = document.querySelector('.table-wrap');
+  tableSection.innerHTML = '';  // clear table section
 
-  // const table = document.createElement('table');
-  // table.className = 'table';
-  // tableSection.appendChild(table); 
+  /* create new table */
+  const table = document.createElement('table');
+  table.className = 'table';
+  tableSection.appendChild(table); 
 
-  // renderThead();
-  const tbody = document.querySelector('tbody');
 
-  // const tbody = document.createElement('tbody');
-  // table.appendChild(tbody);
+
+  /* create filters object */
+  const filtersDiv = document.querySelector('.filters');
+  const filtersChecboxes = filtersDiv.querySelectorAll('input[type=checkbox]');
+  let filters = {}
+  filtersChecboxes.forEach(checkbox => {
+    filters[checkbox.id] = checkbox.checked;
+  });
+
+  /* create an array of filters whose status is true */
+  const filtersTrue = []
+  for (const key in filters) {
+    if (filters.hasOwnProperty(key) && filters[key] === true) {
+      const filter = key;
+      filtersTrue.push(filter);
+    }
+  }
+
+  renderThead(filtersTrue);
+
+  const tbody = document.createElement('tbody');
+  table.appendChild(tbody);
   tbody.innerHTML = '';
 
-  
-
-  list.forEach(element => renderRows(element));
+  list.forEach(element => renderRows(element, filtersTrue));
 
 
 
-  function renderThead() {
+  /* create and fill thead with filters */
+  function renderThead(filtersTrue) {
+
     const thead = document.createElement('thead');
-    thead.innerHTML = `
-      <thead>
-        <tr>
-          <th>Date/Time</th>
-          <th class="weather">Weather</th>
-          <th class="temperature">Temperature</th>
-          <th class="max-temp">Max Temp.</th>
-          <th class="min-temp">Min Temp.</th>
-          <th class="pressure">Pressure</th>
-          <th class="humidity">Humidity</th>
-          <th class="feels-like">Feels like</th>
-        </tr>
-      </thead>`;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+    <th>Date/Time</th>
+    <th class="weather">Weather</th>`;
+
+    filtersTrue.forEach(filter => {
+
+      const th = document.createElement('th');
+      th.className = filter;
+
+      switch (filter) {
+        case 'temperature':
+          th.innerHTML = 'Temperature';
+          break;
+        case 'max-temp':
+          th.innerHTML = 'Max Temp.';
+          break;
+        case 'min-temp':
+          th.innerHTML = 'Min Temp.';
+          break;
+        case 'pressure':
+          th.innerHTML = 'Pressure';
+          break;
+        case 'humidity':
+          th.innerHTML = 'Humidity';
+          break;
+        case 'feels-like':
+          th.innerHTML = 'Feels like';
+          break;
+
+        default:
+          break;
+      }
+      tr.appendChild(th);
+    });
+    
+    thead.appendChild(tr);
     table.appendChild(thead);
   }
 
 
-  
-  function renderRows(elem) {
+  /* create and fill rows in tbody with filters */
+  function renderRows(elem, filtersTrue) {
 
     const date = formatDateAndTime(elem.dt_txt);
     const icon = `<img class="weather-img"
@@ -59,17 +104,45 @@ const renderTable = (list) => {
     // create new table row
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td>${date}</td>
-      <td class="weather">${icon}</td>
-      <td class="temperature">${temperature}</td>
-      <td class="max-temp">${maxTemp}</td>
-      <td class="min-temp">${minTemp}</td>
-      <td class="pressure">${pressure}</td>
-      <td class="humidity">${humidity}</td>
-      <td class="feels-like">${feelsLike}</td>`;
+    <td>${date}</td>
+    <td class="weather">${icon}</td>`;
+
+
+    filtersTrue.forEach(filter => {
+
+      const td = document.createElement('td');
+      td.className = filter;
+      td.innerHTML = filter;
+      
+      switch (filter) {
+        case 'temperature':
+          td.innerHTML = temperature;
+          break;
+        case 'max-temp':
+          td.innerHTML = maxTemp;
+          break;
+        case 'min-temp':
+          td.innerHTML = minTemp;
+          break;
+        case 'pressure':
+          td.innerHTML = pressure;
+          break;
+        case 'humidity':
+          td.innerHTML = humidity;
+          break;
+        case 'feels-like':
+          td.innerHTML = feelsLike;
+          break;
+
+        default:
+          break;
+      }
+
+      tr.appendChild(td);
+    });
+
     tbody.appendChild(tr);
   }
-
 };
 
 export default renderTable;
