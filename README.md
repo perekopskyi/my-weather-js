@@ -1,1 +1,1 @@
-"# my-weather-js" 
+# my-weather-js

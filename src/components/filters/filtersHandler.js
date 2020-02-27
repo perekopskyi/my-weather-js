@@ -12,16 +12,12 @@ import switcherHandler from "../switcher/switcherHandler";
 const filtersHandler = event => {
 
   const target = event.target;
-  const colum = document.querySelectorAll(`th.${target.id}, td.${target.id}`);
+  const cellsInColumn = document.querySelectorAll(`th.${target.id}, td.${target.id}`);
 
   if (target.checked) {
-    colum.forEach(td => {
-      td.style.display = 'table-cell';
-    });
+    cellsInColumn.forEach(td => td.style.display = 'table-cell');
   } else {
-    colum.forEach(td => {
-      td.style.display = 'none';
-    });
+    cellsInColumn.forEach(td => td.style.display = 'none');
   }
 
   /* check units */
