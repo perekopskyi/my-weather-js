@@ -15,13 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // filters
   const filtersDiv = document.querySelector('.filters');
   const filtersChecboxes = filtersDiv.querySelectorAll('input[type=checkbox]');
+  const tbody = document.querySelector('tbody');
   filtersChecboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', filtersHandler);
+   
+    /* lock filters if table are empty */
+    if (tbody.children.length === 0) {
+      checkbox.setAttribute('disabled', true);
+    } else {
+      checkbox.removeAttribute('disabled');
+      checkbox.addEventListener('change', filtersHandler);
+    }
   });
-
-
-  // event toggle switcher
-  const switcherUnits = switcherHandler();
 
 
   // event submit form
@@ -34,5 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     weather.then(weatherHandler);
   });
 
+
+  // event toggle switcher
+  switcherHandler();
 
 });
