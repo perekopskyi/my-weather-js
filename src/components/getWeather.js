@@ -4,9 +4,9 @@
  * @param {string} city name
  * @param {string} units 
  */
-const getWeaher = (city, units = 'metric') => {
+const getWeather = (city, units = 'metric') => {
 
-  const openWeatherApiKey = 'a71cbacce1b2b9aa059f27a00094c380'; // мой ключ
+  const openWeatherApiKey = '8a480d014fa9dd3c95d8fbf4531869d3'; // мой ключ
   const weatherApiLink = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${openWeatherApiKey}`;
 
   return fetch(weatherApiLink)
@@ -19,4 +19,4 @@ const getWeaher = (city, units = 'metric') => {
     });
 };
 
-export default getWeaher;
+export default getWeather;

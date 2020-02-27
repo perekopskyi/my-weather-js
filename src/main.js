@@ -1,9 +1,9 @@
 import './scss/style.scss';
-import getWeaher from './components/getWeaher';
+import getWeather from './components/getWeather';
 import weatherHandler from './components/weatherHandler';
-import filtersHandler from './components/filters/filtersHandler';
-import switcherHandler from './components/switcher/switcherHandler';
 import showError from './components/form/showError';
+import Filters from './components/filters/filters';
+import Switcher from './components/switcher/switcher';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -13,24 +13,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   // filters
+  const filters = new Filters();
+  filters.getFilters();
+
   const filtersChecboxes = document.querySelectorAll('.filters input[type=checkbox]');
   filtersChecboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', filtersHandler);
+    checkbox.addEventListener('change', event => {
+      filters.setFilters(event.target);
+    });
   });
+
+
+  // event toggle switcher
+  const switcher = new Switcher();
+
+  const switcherButton = document.querySelector('.toggleCheck_switch');
+  switcherButton.addEventListener('click', switcher.setUnits);
 
 
   // event submit form
   const form = document.querySelector('.form');
   form.addEventListener('submit', () => {
     event.preventDefault();
-    const units = switcherHandler();
+    const units = switcher.getUnits();
 
-    const weather = getWeaher(cityInput.value, units);
+    const weather = getWeather(cityInput.value, units);
     weather.then(weatherHandler);
   });
-
-
-  // event toggle switcher
-  switcherHandler();
 
 });
