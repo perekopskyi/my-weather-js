@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   // filters
-  const filtersDiv = document.querySelector('.filters');
-  const filtersChecboxes = filtersDiv.querySelectorAll('input[type=checkbox]');
+  const filtersChecboxes = document.querySelectorAll('.filters input[type=checkbox]');
   filtersChecboxes.forEach(checkbox => {
     checkbox.addEventListener('change', filtersHandler);
   });

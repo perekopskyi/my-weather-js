@@ -14,9 +14,8 @@ const renderTable = (list) => {
 
 
   /* create filters object */
-  const filtersDiv = document.querySelector('.filters');
-  const filtersChecboxes = filtersDiv.querySelectorAll('input[type=checkbox]');
-  let filters = {}
+  const filtersChecboxes = document.querySelectorAll('.filters input[type=checkbox]');
+  let filters = {};
   filtersChecboxes.forEach(checkbox => {
     filters[checkbox.id] = checkbox.checked;
   });
