@@ -1,0 +1,149 @@
+$main: #808080;
+$active: #5f5f5f;
+
+.toggleCheck { 
+
+}
+.toggleCheck *,
+.toggleCheck *:before,
+.toggleCheck *:after { 
+  box-sizing:border-box; 
+}
+
+.toggleCheck input[type="checkbox"] { 
+  display:none; 
+}
+.toggleCheck input[type="checkbox"][disabled] ~ label { 
+  pointer-events:none; 
+}
+.toggleCheck input[type="checkbox"][disabled] ~ label .toggleCheck_switch {
+  opacity:0.4; 
+}
+.toggleCheck input[type="checkbox"]:checked ~ label .toggleCheck_switch:before {
+  content:attr(data-unchecked); left:0;
+}
+.toggleCheck input[type="checkbox"]:checked ~ label .toggleCheck_switch:after {
+  content:attr(data-checked);
+}
+.toggleCheck label {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  position:relative;
+  display:-webkit-box;
+  display:flex;
+  -webkit-box-align:center;align-items:center;
+}
+
+.toggleCheck label .toggleCheck_switch { 
+  position:relative; 
+}
+.toggleCheck label .toggleCheck_switch:before {
+  content:attr(data-checked);
+  position:absolute;
+  top:0;
+  left: 0;
+  text-transform:uppercase;
+  text-align:center;
+}
+.toggleCheck label .toggleCheck_switch:after {
+  content:attr(data-unchecked);
+  position:absolute;
+  text-transform:uppercase;
+  text-align:center;
+  background:#fff;
+  z-index:5;
+  -webkit-transform:translate3d(0, 0, 0);
+  transform:translate3d(0, 0, 0);
+}
+
+
+
+.toggleCheck input[type="checkbox"]:focus ~ label .toggleCheck_switch:after,
+.toggleCheck input[type="checkbox"]:hover ~ label .toggleCheck_switch:after {
+  box-shadow:0 3px 3px rgba(0, 0, 0, 0.4);
+}
+.toggleCheck input[type="checkbox"]:checked ~ label .toggleCheck_switch:after {
+  -webkit-transform:translate3d(65px, 0, 0);
+  transform:translate3d(65px, 0, 0);
+}
+.toggleCheck input[type="checkbox"]:checked:focus ~ label .toggleCheck_switch:after,
+.toggleCheck input[type="checkbox"]:checked:hover ~ label .toggleCheck_switch:after {
+  box-shadow:0 3px 3px rgba(0, 0, 0, 0.4);
+}
+.toggleCheck label {
+  font-size:14px;
+}
+.toggleCheck label .toggleCheck_switch {
+  height:36px;
+  -webkit-box-flex:0;
+  flex:0 0 134px;
+  border-radius:4px;
+}
+.toggleCheck label .toggleCheck_switch:before {
+  left:67px;
+  font-size:12px;
+  line-height:36px;
+  width:67px;
+  padding:0 12px;
+}
+.toggleCheck label .toggleCheck_switch:after {
+  top:2px;
+  left:2px;
+  border-radius:2px;
+  width:65px;
+  line-height:32px;
+  font-size:12px;
+}
+.toggleCheck label .toggleCheck_switch:hover:after {
+  box-shadow:0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.toggleCheck input[type="checkbox"][disabled] ~ label {
+  color:$active;
+}
+.toggleCheck input[type="checkbox"]:focus ~ label .toggleCheck_switch,
+.toggleCheck input[type="checkbox"]:hover ~ label .toggleCheck_switch {
+  background:$active;
+}
+.toggleCheck input[type="checkbox"]:focus ~ label .toggleCheck_switch:after,
+.toggleCheck input[type="checkbox"]:hover ~ label .toggleCheck_switch:after {
+  color:$active;
+}
+.toggleCheck input[type="checkbox"]:hover ~ label {
+  color:$active;
+}
+.toggleCheck input[type="checkbox"]:checked ~ label:hover {
+  color:$main;
+}
+.toggleCheck input[type="checkbox"]:checked ~ label .toggleCheck_switch {
+  background:$main;
+}
+.toggleCheck input[type="checkbox"]:checked ~ label .toggleCheck_switch:after {
+  color:$main;
+}
+.toggleCheck input[type="checkbox"]:checked:focus ~ label .toggleCheck_switch,
+.toggleCheck input[type="checkbox"]:checked:hover ~ label .toggleCheck_switch {
+  background:$active;
+}
+.toggleCheck input[type="checkbox"]:checked:focus ~ label .toggleCheck_switch:after,
+.toggleCheck input[type="checkbox"]:checked:hover ~ label .toggleCheck_switch:after {
+  color:$active;
+}
+
+.toggleCheck label .toggleCheck_switch {
+  -webkit-transition:background 0.3s ease-in-out;
+  transition:background 0.3s ease-in-out;
+  background:$main;
+}
+.toggleCheck label .toggleCheck_switch:before {
+  color:rgba(255, 255, 255, 0.6);
+}
+.toggleCheck label .toggleCheck_switch:after {
+  -webkit-transition:-webkit-transform 0.3s ease-in-out;
+  transition:-webkit-transform 0.3s ease-in-out;
+  transition:transform 0.3s ease-in-out;
+  transition:transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  color:$main;
+}

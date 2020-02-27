@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Weather</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="main">
+
+    <a href="https://github.com/perekopskyi/my-weather-js" target="_blank" rel="noopener noreferrer">Link on Github</a>
+
+    <form class="form">
+      <label class="city_label" for="city">Enter city name</label>
+      <input class="city_input" type="text" name="city" id="city" autocomplete="off" placeholder="example, Dnepr">
+      <input class="button" type="submit" value="Show">
+      <span class="error">Error message</span>
+    </form>
+
+    <div class="city-block">
+      <h1 class='city_title'>City</h1>
+      <p class="coordinate">
+        latitude: <span id="latitude">###</span>, longitude: <span id="longitude">###</span>
+      </p>
+    </div>
+
+    <div class="switcher-block">
+      <div class="toggleCheck">
+        <input type="checkbox" id="units">
+        <label for="units">
+          <div class="toggleCheck_switch" data-checked="°F" data-unchecked="°С"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date/Time</th>
+            <th class="weather">Weather</th>
+            <th class="temperature">Temperature</th>
+            <th class="max-temp">Max Temp.</th>
+            <th class="min-temp">Min Temp.</th>
+            <th class="pressure">Pressure</th>
+            <th class="humidity">Humidity</th>
+            <th class="feels-like">Feels like</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+            <td></td>
+            <td class="weather"></td>
+            <td class="temperature"></td>
+            <td class="max-temp"></td>
+            <td class="min-temp"></td>
+            <td class="pressure"></td>
+            <td class="humidity"></td>
+            <td class="feels-like"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="weather"></td>
+            <td class="temperature"></td>
+            <td class="max-temp"></td>
+            <td class="min-temp"></td>
+            <td class="pressure"></td>
+            <td class="humidity"></td>
+            <td class="feels-like"></td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="filters">
+      <label class="checkbox">
+        <input type="checkbox" id="temperature" value="temperature" checked>
+        <span></span>
+        Temperature
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="max-temp" value="max-temp" checked>
+        <span></span>
+        Max. temp
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="min-temp" value="min-temp" checked>
+        <span></span>
+        Min. temp
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="pressure" value="pressure" checked>
+        <span></span>
+        Pressure
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="humidity" value="humidity" checked>
+        <span></span>
+        Humidity
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="feels-like" value="feels-like" checked>
+        <span></span>
+        Feels like
+      </label>
+    </div>
+  </main>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
