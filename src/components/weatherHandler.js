@@ -1,5 +1,5 @@
 import renderTable from "./table/renderTable";
-import filtersHandler from "./filters/filtersHandler";
+import renderCity from "./renderCity";
 
 /**
  * Show error message, city data and render weather table
@@ -19,15 +19,7 @@ const weatherHandler = weatherData => {
 
   const data = weatherData;
   
-  /* show city, latitude and longitude */
-  const city = document.querySelector('.city_title');
-  city.innerText = data.city.name;
-  const latitude = document.querySelector('#latitude');
-  latitude.innerText = data.city.coord.lat;
-  const longitude = document.querySelector('#longitude');
-  longitude.innerText = data.city.coord.lon;
-
-
+  renderCity(data);
   renderTable(data.list);
 };
 

@@ -1,4 +1,5 @@
 import formatDateAndTime from "./formatDate";
+import getIcon from './getIcon';
 
 const renderTable = (list) => {
  
@@ -89,9 +90,7 @@ const renderTable = (list) => {
   function renderRows(elem, filtersTrue) {
 
     const date = formatDateAndTime(elem.dt_txt);
-    const icon = `<img class="weather-img"
-    src="http://openweathermap.org/img/wn/${elem.weather[0].icon}@2x.png" 
-    alt="${elem.weather[0].description}" title="${elem.weather[0].description}">`;
+    const icon = getIcon(elem);
     const temperature = elem.main.temp;
     const maxTemp = elem.main.temp_max;
     const minTemp = elem.main.temp_min;
