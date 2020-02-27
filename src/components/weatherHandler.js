@@ -29,15 +29,6 @@ const weatherHandler = weatherData => {
 
 
   renderTable(data.list);
-
-  /* unlock filters */
-  const filtersDiv = document.querySelector('.filters');
-  const filtersChecboxes = filtersDiv.querySelectorAll('input[type=checkbox]');
-  filtersChecboxes.forEach(checkbox => {
-    checkbox.removeAttribute('disabled');
-    checkbox.addEventListener('change', filtersHandler);
-  });
-
 };
 
 export default weatherHandler;
