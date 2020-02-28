@@ -88,6 +88,8 @@ const renderTable = (list) => {
 
   /* create and fill rows in tbody with filters */
   function renderRows(elem, filtersTrue) {
+    console.log('elem: ', elem);
+
 
     const date = formatDateAndTime(elem.dt_txt);
     const icon = getIcon(elem);
