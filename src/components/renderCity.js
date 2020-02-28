@@ -5,7 +5,7 @@
 const renderCity = data => {
 
   const city = document.querySelector('.city_title');
-  city.innerText = data.city.name;
+  city.innerText = `${data.city.name}, ${data.city.country}`;
 
   const latitude = document.querySelector('#latitude');
   latitude.innerText = data.city.coord.lat;
