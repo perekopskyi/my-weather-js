@@ -88,17 +88,15 @@ const renderTable = (list) => {
 
   /* create and fill rows in tbody with filters */
   function renderRows(elem, filtersTrue) {
-    console.log('elem: ', elem);
-
 
     const date = formatDateAndTime(elem.dt_txt);
     const icon = getIcon(elem);
-    const temperature = elem.main.temp;
-    const maxTemp = elem.main.temp_max;
-    const minTemp = elem.main.temp_min;
+    const temperature = Math.round(elem.main.temp);
+    const maxTemp = Math.round(elem.main.temp_max);
+    const minTemp = Math.round(elem.main.temp_min);
     const pressure = elem.main.pressure;
     const humidity = elem.main.humidity;
-    const feelsLike = elem.main.feels_like;
+    const feelsLike = Math.round(elem.main.feels_like);
 
 
     // create new table row
